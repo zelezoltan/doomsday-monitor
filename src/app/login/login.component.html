@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Doomsday Vault</mat-card-title>
+    <mat-card-subtitle>Monitoring application</mat-card-subtitle>
+  </mat-card-header>
+  
+  <img mat-card-image src="https://cdn.dribbble.com/users/2260998/screenshots/4891086/vault-logo.png" alt="Vault">
+  <mat-card-content style="text-align:center">
+      <div class="alert" [class.alert-warning]="!pressed && success || pressed" [class.alert-danger]="!pressed && !success" role="alert">
+          {{message}}
+        </div>
+      <button *ngIf="!pressed" mat-raised-button color="primary" style="width:100px; background-color: #444; margin-top:5px;" (click)="login()">Login</button>
+      <div *ngIf="pressed" style="width: fit-content; margin: 0 auto;">
+          <mat-spinner></mat-spinner>
+      </div>
+      
+    </mat-card-content>
+</mat-card>
