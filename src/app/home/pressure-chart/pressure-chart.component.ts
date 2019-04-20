@@ -13,14 +13,15 @@ export class PressureChartComponent implements OnInit {
   chart: Chart;
   constructor(db: AngularFireDatabase) {
     db.list('pressure', ref => ref.limitToLast(1)).valueChanges().subscribe(data => {
-      console.log(data, (new Date()).getTime());
       if (data.length > 0) {
         if (this.chart) {
-          let shift = true;
-          console.log(this.chart.ref.series[0].data.length, this.chart.ref);
-          if (this.chart.ref.series[0].data.length < 10) { shift = false; }
           const newItem: any = data[0];
-          this.chart.addPoint([newItem.date, newItem.value], 0, true, shift);
+          if((new Date()).getTime()/1000 - newItem.date/1000 < 10) {
+            let shift = true;
+            if (this.chart.ref.series[0].data.length < 10) { shift = false; }
+            
+            this.chart.addPoint([newItem.date, newItem.value], 0, true, shift);
+          }
         } else {
           alert('init chart, first!');
         }
@@ -57,7 +58,7 @@ export class PressureChartComponent implements OnInit {
     },
     yAxis: {
         title: {
-            text: 'Pressure Pa'
+            text: 'Pressure Millibars'
         },
         /*plotLines: [{
             value: 0,
@@ -67,7 +68,7 @@ export class PressureChartComponent implements OnInit {
     },
     tooltip: {
         headerFormat: '<b>{series.name}</b><br/>',
-        pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f} Pa'
+        pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f} Millibars'
     },
     legend: {
         enabled: false

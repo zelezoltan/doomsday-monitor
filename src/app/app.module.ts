@@ -5,6 +5,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {CommonModule} from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { ChartModule } from 'angular-highcharts';
 import { AngularFireModule } from '@angular/fire';
@@ -31,6 +35,9 @@ import { PressureChartComponent } from './home/pressure-chart/pressure-chart.com
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
+    HttpClientModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatDividerModule,
     MatCardModule,

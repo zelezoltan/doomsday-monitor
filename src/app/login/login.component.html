@@ -5,7 +5,7 @@
     <mat-card-subtitle>Monitoring application</mat-card-subtitle>
   </mat-card-header>
   
-  <img mat-card-image src="https://cdn.dribbble.com/users/2260998/screenshots/4891086/vault-logo.png" alt="Vault">
+  <img mat-card-image [src]="current_url" alt="Vault">
   <mat-card-content style="text-align:center">
       <div class="alert" [class.alert-warning]="!pressed && success || pressed" [class.alert-danger]="!pressed && !success" role="alert">
           {{message}}
