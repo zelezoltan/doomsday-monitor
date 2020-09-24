@@ -1,4 +1,6 @@
 # DoomsdayMonitor
+Frontend of the IoT project in real time systems.
+
 https://www.npmjs.com/package/angular-highcharts
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
